@@ -1,8 +1,8 @@
 <template>
 
-    {{  create }} 
+    {{  item }} 
     
-    </template>
+</template>
     
     
     <script>
@@ -14,19 +14,19 @@
         export default {
             setup() {
     
-                const create = ref([]);
+                const createItems = ref([]);
     
                 onMounted (() => {
     
                     axios.get(`http://127.0.0.1:8000/api/articles`)
                         .then(response => {
-                            create.value = response.data;
+                            createItems.value = response.data;
                         });
                         
                 })
     
     
-                return { create }
+                return { createItems }
             }
         }
     

@@ -1,8 +1,8 @@
 <template>
 
-    {{  update }} 
+    {{  item }} 
     
-    </template>
+</template>
     
     
     <script>
@@ -14,19 +14,19 @@
         export default {
             setup() {
     
-                const update = ref([]);
+                const updateItems = ref([]);
     
                 onMounted (() => {
     
-                    axios.get(`http://127.0.0.1:8000/api/articles`)
+                    axios.get(`http://127.0.0.1:8000/api/articles/update`)
                         .then(response => {
-                            update.value = response.data;
+                            updateItems.value = response.data;
                         });
                         
                 })
     
     
-                return { update }
+                return { updateItems }
             }
         }
     

@@ -1,8 +1,8 @@
 <template>
 
-    {{  Delete }} 
+    {{  items }} 
     
-    </template>
+</template>
     
     
     <script>
@@ -14,19 +14,19 @@
         export default {
             setup() {
     
-                const Delete = ref([]);
+                const deleteItems = ref([]);
     
                 onMounted (() => {
     
-                    axios.get(`http://127.0.0.1:8000/api/articles`)
+                    axios.get(`http://127.0.0.1:8000/api/articles/delete`)
                         .then(response => {
-                            Delete.value = response.data;
+                            deleteItems.value = response.data;
                         });
                         
                 })
     
     
-                return { Delete }
+                return { deleteItems }
             }
         }
     
