@@ -20,7 +20,6 @@ const routes = [
     component: DeleteApp
   }
 
-  // localMovies, local-movies
 ]
 
 const router = createRouter({
