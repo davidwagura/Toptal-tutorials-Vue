@@ -1,19 +1,26 @@
 /* eslint-disable no-unused-vars */
 import { createRouter, createWebHistory } from 'vue-router'
-import CreateApp from '../views/CreateApp.vue'
+import Index from '../views/IndexItem.vue'
+import Create from '../views/CreateItem.vue'
 import UpdateApp from '../views/UpdateApp.vue'
 import DeleteApp from '../views/DeleteApp.vue'
 
 
 const routes = [
     {
-        path: '/create',
-        name: 'create',
-        component: CreateApp
+        path: '/',
+        name: 'index',
+        component: IndexItem
     },
     {
+        path: '/create',
+        name: 'create',
+        component: CreateItem
+    },
+
+    {
         path: '/update/:id',
-        name: 'update-app',
+        name: 'update',
         component: UpdateApp
     },
     {
@@ -25,7 +32,7 @@ const routes = [
 ]
 
 const router = createRouter({
-    history: createWebHistory(process.env.BASE_URL),
+    history: createWebHistory(),
     routes
 })
 
