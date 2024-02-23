@@ -2,7 +2,7 @@
     <div>
       <h1>Add Car</h1>
       <div>
-        <form @submit.prevent="submitForm">
+        <form>
           <div>
             <label for="title">Title:</label>
             <input type="text" id="title" v-model="formData.title" />
@@ -12,37 +12,43 @@
             <textarea id="body" v-model="formData.body"></textarea>
           </div>
   
-          <button type="submit">Submit</button>
+          <button type="button" @click="submitForm()">Submit</button>
         </form>
       </div>
     </div>
   </template>
   
   <script>
-  import { ref } from 'vue';
   import axios from 'axios';
-  
   export default {
-    setup() {
-      const formData = ref({
-        title: '',
-        body: '',
-      });
-  
-      const submitForm = () => {
-        axios.post('http://127.0.0.1:8000/api/articles', formData.value)
-          .then(response => {
-            console.log('Response:', response.data);
-            formData.value.title = '';
-            formData.value.body = '';
-          })
-          .catch(error => {
-            console.error('Error submitting form:', error);
-          });
+    name: 'CreatItem',
+    
+    data() {
+      return {
+        formData: {
+          title: '',
+          body: '',
+          },
       };
-  
-      return { formData, submitForm };
+    },
+    methods: {
+      submitForm() {
+        axios.post('http://127.0.0.1:8000/api/article', this.formData)
+        .then(response => {
+          console.log('response');
+          
+            this.formData.title = ""
+            this.formData.body = ""
+          
+          return response
+        });
+      }
     }
-  }
+
+  }  
   </script>
-  
+  //    const formData = ref({
+    title: '',
+    body: ''
+  })
+
